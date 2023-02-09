@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.navbar {
+  background-color: #008037;
+}
+
+.navbar-brand {
+  font-size: 50px;
+}
+
+.card {
+  border-bottom: 2px solid #008037;
+  border-top: 2px solid #008037;
+  border-right: 1px solid #008037;
+  border-left: 1px solid #008037;
+  padding: 0px;
+  background-color: #fff;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-header {
+  background-color: #008037;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.card-header p {
+  display: flex;
+  align-items: center;
+}
+
+.date-body {
+  text-align: center;
+}
+
+.date-body h1 {
+  font-size: 48px;
+  margin-top: 10px;
+}
+
+.card-desc {
+  background-color: #008037;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  font-size: 38px;
+  background-color: #008037;
+  color: #fff;
+  border: none;
+  font-weight: 500;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
