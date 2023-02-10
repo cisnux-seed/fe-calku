@@ -22,6 +22,10 @@ const init = () => {
         if (response.status === 200) {
           foods = responseBody.data.foodCalories;
           loadFoods();
+          if (!foods.length) {
+            window.location.href = "detail.html";
+            alert("Makanan tidak ditemukan");
+          }
         } else {
           alert(responseBody.message);
         }

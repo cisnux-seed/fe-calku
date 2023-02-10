@@ -14,31 +14,54 @@ window.onload = function () {
 init();
 
 const onSave = () => {
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
+  const createdAt = document.getElementById("inputDate").value;
+  const foodName = document.getElementById("inputFood").value;
+  const quantity = document.getElementById("inputQuantity").value;
 
-  var raw = JSON.stringify({
-    userId: user.id,
-    foodName: document.getElementById("inputFood").value,
-    quantity: parseInt(document.getElementById("inputQuantity").value),
-  });
+  if (
+    !user.id ||
+    !foodName ||
+    !createdAt ||
+    !user.id.trim("").length ||
+    !foodName.trim("").length ||
+    !createdAt.trim("").length ||
+    !quantity
+  ) {
+    alert("Data yang anda masukkan tidak boleh kosong");
+  } else if (quantity === "0") {
+    alert("Quantity harus lebih dari 0");
+  } else {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    const raw = JSON.stringify({
+      userId: user.id,
+      foodName: foodName,
+      quantity: parseInt(quantity),
+      createdAt: new Intl.DateTimeFormat("id-GB", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }).format(new Date(createdAt)),
+    });
 
-  var requestOptions = {
-    method: "POST",
-    headers: myHeaders,
-    body: raw,
-    redirect: "follow",
-  };
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
 
-  fetch("https://calorie.cisnux.xyz/foodCalories", requestOptions)
-    .then(async (response) => {
-      const responseBody = await response.json();
-      if (response.status === 201) {
-        alert(responseBody.message);
-        window.location.href = "home.html";
-      } else {
-        alert(responseBody.message);
-      }
-    })
-    .catch((error) => console.error(error));
+    fetch("https://calorie.cisnux.xyz/foodCalories", requestOptions)
+      .then(async (response) => {
+        const responseBody = await response.json();
+        if (response.status === 201) {
+          alert(responseBody.message);
+          window.location.href = "home.html";
+        } else {
+          alert(responseBody.message);
+        }
+      })
+      .catch((error) => console.error(error));
+  }
 };
